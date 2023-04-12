@@ -4,8 +4,8 @@ const { getMovies, createMovie, deleteMovie } = require('../controllers/movies')
 
 const regex = /^((ftp|http|https):\/\/)?www\.([A-z]+)\.([A-z]{2,})/;
 
-router.get('/movies', getMovies);
-router.post('/movies', celebrate({
+router.get('/', getMovies);
+router.post('/', celebrate({
   body: Joi.object().keys({
     country: Joi.string().required(),
     director: Joi.string().required(),
@@ -20,7 +20,7 @@ router.post('/movies', celebrate({
     nameEN: Joi.string().required(),
   }),
 }), createMovie);
-router.delete('/movies/_id', celebrate({
+router.delete('/:_id', celebrate({
   params: Joi.object().keys({
     _id: Joi.string().required().length(24).hex(),
   }),
