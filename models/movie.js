@@ -59,7 +59,7 @@ const movieSchema = new mongoose.Schema({
   },
   movieId: {
     required: true,
-    tupe: Number,
+    type: Number,
   },
   nameRU: {
     required: true,
@@ -71,6 +71,6 @@ const movieSchema = new mongoose.Schema({
   },
 });
 
-const Movie = mongoose.model('user', movieSchema);
+const Movie = mongoose.model('movie', movieSchema);
 
 module.exports = Movie;
