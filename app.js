@@ -9,7 +9,7 @@ app.get('/', (req, res) => {
 });
 
 mongoose.set('runValidators', true);
-mongoose.connect('mongodb://localhost:27017/moviedb');
+mongoose.connect('mongodb://localhost:27017/bitfilmsdb');
 
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);

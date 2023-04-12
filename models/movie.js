@@ -52,7 +52,7 @@ const movieSchema = new mongoose.Schema({
       message: 'Некорректный URL',
     },
   },
-  oener: {
+  owner: {
     required: true,
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user',
