@@ -3,7 +3,7 @@ const express = require('express');
 const helmet = require('helmet');
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
-const { limiter } = require('./middlewares/limiter');
+const limiter = require('./middlewares/limiter');
 const routes = require('./routes/index');
 const errHandler = require('./errors/handler_error');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
@@ -24,7 +24,7 @@ app.get('/crash-test', () => {
   }, 0);
 });
 
-app.use('/', routes);
+app.use(routes);
 
 app.use(errorLogger);
 app.use(errors());
