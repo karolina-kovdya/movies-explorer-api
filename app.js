@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const helmet = require('helmet');
 const mongoose = require('mongoose');
 const routes = require('./routes/index');
 
@@ -8,6 +9,7 @@ const app = express();
 
 app.use(express.json());
 
+app.use(helmet());
 app.use('/', routes);
 
 mongoose.set('runValidators', true);
