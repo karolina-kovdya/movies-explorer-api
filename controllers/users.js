@@ -1,11 +1,13 @@
 const bcrypt = require('bcrypt');
-// const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 const User = require('../models/users');
 const NotFoundError = require('../errors/notFound_error');
 const BadRequestError = require('../errors/badRequest_error');
 const UnauthorizedError = require('../errors/unauthorized_error');
 const ConflictError = require('../errors/conflict_error');
 const { CREATED } = require('../utils/constants');
+
+const { NODE_ENV, JWT_SECRET } = process.env;
 
 const getCurrentUser = (req, res, next) => {
   User.findById(req.user._id)
@@ -33,7 +35,10 @@ const updateUser = (req, res, next) => {
       if (!user) {
         throw new NotFoundError('Пользователь не найден');
       }
-      res.send(user);
+      res.send({
+        name: user.name,
+        email: user.email,
+      });
     })
     .catch((err) => {
       if (err.name === 'CastError' || err.name === 'ValidationError') {
@@ -58,8 +63,8 @@ const loginUser = (req, res, next) => {
         throw new UnauthorizedError(('Неверный email или пароль'));
       }))
     .then((user) => {
-      // const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'some-secret', { expiresIn: '7d' });
-      res.send(user);
+      const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'my-secret', { expiresIn: '7d' });
+      res.send({ token });
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {

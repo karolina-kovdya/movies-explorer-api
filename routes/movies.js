@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { celebrate, Joi } = require('celebrate');
 const { getMovies, createMovie, deleteMovie } = require('../controllers/movies');
 
-const regex = /^((ftp|http|https):\/\/)?www\.([A-z]+)\.([A-z]{2,})/;
+const regex = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\\+~#=]+\.[a-zA-Z0-9()]+([-a-zA-Z0-9()@:%_\\+.~#?&/=#]*)/;
 
 router.get('/', getMovies);
 router.post('/', celebrate({

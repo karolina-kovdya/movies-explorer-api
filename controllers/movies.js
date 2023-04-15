@@ -15,7 +15,7 @@ const createMovie = (req, res, next) => {
     .then((movie) => res.status(CREATED).send(movie))
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        next(new BadRequestError('Некорректный запрос'));
+        next(new BadRequestError('Переданы некорректные данные'));
 
         return;
       }
