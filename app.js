@@ -3,6 +3,7 @@ const express = require('express');
 const helmet = require('helmet');
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
+const cors = require('cors');
 const limiter = require('./middlewares/limiter');
 const routes = require('./routes/index');
 const errHandler = require('./errors/handler_error');
@@ -12,6 +13,7 @@ const { PORT = 3000 } = process.env;
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 app.use(requestLogger);
 
