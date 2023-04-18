@@ -28,7 +28,7 @@ const movieSchema = new mongoose.Schema(
       type: String,
       validate: {
         validator(v) {
-          return validator.isUrl(v);
+          return validator.isURL(v);
         },
         message: 'Некорректный URL',
       },
@@ -38,7 +38,7 @@ const movieSchema = new mongoose.Schema(
       type: String,
       validate: {
         validator(v) {
-          return validator.isUrl(v);
+          return validator.isURL(v);
         },
         message: 'Некорректный URL',
       },
@@ -48,7 +48,7 @@ const movieSchema = new mongoose.Schema(
       type: String,
       validate: {
         validator(v) {
-          return validator.isUrl(v);
+          return validator.isURL(v);
         },
         message: 'Некорректный URL',
       },

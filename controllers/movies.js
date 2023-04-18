@@ -1,5 +1,5 @@
 const Movie = require('../models/movie');
-const CREATED = require('../utils/constants');
+const { CREATED } = require('../utils/constants');
 const BadRequestError = require('../errors/badRequest_error');
 const NotFoundError = require('../errors/notFound_error');
 const ForbiddenError = require('../errors/forbidden_error');
@@ -31,7 +31,7 @@ const deleteMovie = (req, res, next) => {
       } else if (req.user._id !== movie.owner._id.toString()) {
         throw new ForbiddenError('Нет прав на удаление даноого фильма');
       }
-      return movie.remove().then(() => res.send({ message: 'Фильм удален' }));
+      return movie.deleteOne().then(() => res.send({ message: 'Фильм удален' }));
     })
     .catch((err) => {
       if (err.name === 'CastError') {
