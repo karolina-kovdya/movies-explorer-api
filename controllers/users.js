@@ -44,6 +44,9 @@ const updateUser = (req, res, next) => {
       if (err.name === 'CastError' || err.name === 'ValidationError') {
         next(new BadRequestError('Переданы некорректные данные'));
         return;
+      } if (err.code === 11000) {
+        next(new ConflictError('Пользователь с такими данными уже существует'));
+        return;
       }
       next(err);
     });
