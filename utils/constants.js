@@ -7,3 +7,4 @@ module.exports.MOVIE_NOT_FOUND = 'Фильм по указанному id не �
 module.exports.NOT_OWNER = 'Нет прав на удаление даноого фильма';
 module.exports.DELETE_MOVIE = 'Фильм удален';
 module.exports.UNAUTH = 'Пользователь не авторизован';
+module.exports.PAGE_NOT_FOUND = 'Страница не найдена';
